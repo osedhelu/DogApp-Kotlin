@@ -3,9 +3,9 @@ package com.example.dogapp.interfaces
 import com.squareup.moshi.Json
 
 data class Dog(
-    val id: Long,
+    val id: Any,
     val index: Int,
-    @field:Json(name = "name_es") val name: String,
+    val name: String,
     val type: String,
     val heightFemale: String,
     val heightMale: String,

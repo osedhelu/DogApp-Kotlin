@@ -10,8 +10,10 @@ class DogRepository {
     suspend fun downloadDogs(): List<Dog> {
         return withContext(Dispatchers.IO) {
             val dogListApiResponse =  retrofitService.getAllDogs()
+            val dogDTOList = dogListApiResponse.data.dogs
+            val dogDtoMapper = DogDtoMapper()
+            dogDtoMapper.fromDogDTOListToDogDomainList(dogDTOList)
 //            val dogDtoList= dogListApiResponse.data.dogs
-            dogListApiResponse.data.dogs
 //            val dogDtoMapper = DogDtoMapper()
 //            dogDtoMapper.fromDogDTOListToDogDomainList(dogDtoList)
         }
