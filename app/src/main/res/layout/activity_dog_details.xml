@@ -9,10 +9,11 @@
             name="dog"
             type="com.example.dogapp.interfaces.Dog" />
     </data>
+
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/material_dynamic_secondary0">
+        android:background="@color/black"
+        android:layout_height="match_parent">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -288,5 +289,6 @@
             android:indeterminateTint="@color/colorPrimaryDark"
             android:indeterminateTintMode="src_atop"
             android:visibility="gone" />
+
     </FrameLayout>
 </layout>

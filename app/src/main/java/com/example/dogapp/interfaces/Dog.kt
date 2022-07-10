@@ -1,9 +1,11 @@
 package com.example.dogapp.interfaces
 
-import com.squareup.moshi.Json
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Dog(
-    val id: Any,
+    val id: Long,
     val index: Int,
     val name: String,
     val type: String,
@@ -14,4 +16,4 @@ data class Dog(
     val temperament: String,
     val weightFemale: String,
     val weightMale: String
-)
+) : Parcelable

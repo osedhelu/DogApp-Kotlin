@@ -1,5 +1,6 @@
 package com.example.dogapp.doglist
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -19,6 +20,10 @@ class DogAdapter: ListAdapter<Dog,DogAdapter.DogViewHolder>(DiffCallback) {
         }
     }
 
+    private var onItemClickListener:((Dog)->Unit)? = null
+    fun setOnItemClickListener (onItemClickListener:(Dog)->Unit) {
+        this.onItemClickListener = onItemClickListener
+    }
 
     override fun onCreateViewHolder(parent:ViewGroup, viewType:Int ):DogViewHolder {
         val binding = DogListItemBinding
@@ -34,6 +39,9 @@ class DogAdapter: ListAdapter<Dog,DogAdapter.DogViewHolder>(DiffCallback) {
     inner class DogViewHolder(private val binding: DogListItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind (dog: Dog) {
             binding.tvNameDog.text = dog.name
+            binding.tvNameDog.setOnClickListener {
+                onItemClickListener?.invoke(dog)
+            }
         }
 
     }

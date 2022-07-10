@@ -7,7 +7,7 @@ import com.example.dogapp.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val modifier = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(modifier.root)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 }
