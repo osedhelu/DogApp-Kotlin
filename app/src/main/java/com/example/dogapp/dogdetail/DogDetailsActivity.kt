@@ -3,6 +3,7 @@ package com.example.dogapp.dogdetail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.dogapp.R
 import com.example.dogapp.databinding.ActivityDogDetailsBinding
 import com.example.dogapp.interfaces.Dog
 
@@ -16,10 +17,12 @@ class DogDetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
         val dog = intent?.extras?.getParcelable<Dog>(DOG_KEY)
         if(dog==null) {
-            Toast.makeText(this, "Perro no encontrado", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.messageError, Toast.LENGTH_SHORT).show()
             finish()
             return
         }
+        binding.dogIndex.text = getString(R.string.index_format, dog.index)
+        binding.lifeExpectancy.text = getString(R.string.life_expectancy_format, dog.lifeExpectancy)
         binding.dog = dog
 
     }

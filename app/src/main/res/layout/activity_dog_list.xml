@@ -7,6 +7,9 @@
 
     </data>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDogList"
         android:layout_width="match_parent"
@@ -14,4 +17,13 @@
         tools:context=".doglist.DogListActivity">
 
     </androidx.recyclerview.widget.RecyclerView>
+    <ProgressBar
+        android:id="@+id/pbLoadigDog"
+        android:layout_width="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content" />
+    </FrameLayout>
 </layout>

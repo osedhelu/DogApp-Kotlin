@@ -5,4 +5,8 @@
     <string name="height">Height</string>
     <string name="group">Group</string>
     <string name="male">Male</string>
+    <string name="messageError">este perro no se pudo encontrar</string>
+    <string name="index_format">#%d</string>
+    <string name="life_expectancy_format">%s years</string>
+
 </resources>
