@@ -1,22 +1,16 @@
 package com.example.dogapp.doglist
 
+import com.example.dogapp.api.ApiResponseStatus
 import com.example.dogapp.api.DogsApi.retrofitService
 import com.example.dogapp.api.dto.DogDtoMapper
+import com.example.dogapp.api.makeNetworkCall
 import com.example.dogapp.interfaces.Dog
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 class DogRepository {
-    suspend fun downloadDogs(): List<Dog> {
-        return withContext(Dispatchers.IO) {
-            val dogListApiResponse =  retrofitService.getAllDogs()
-            val dogDTOList = dogListApiResponse.data.dogs
-            val dogDtoMapper = DogDtoMapper()
-            dogDtoMapper.fromDogDTOListToDogDomainList(dogDTOList)
-//            val dogDtoList= dogListApiResponse.data.dogs
-//            val dogDtoMapper = DogDtoMapper()
-//            dogDtoMapper.fromDogDTOListToDogDomainList(dogDtoList)
-        }
-
+    suspend fun downloadDogs(): ApiResponseStatus<List<Dog>> = makeNetworkCall {
+        val dogListApiResponse = retrofitService.getAllDogs()
+        val dogDTOList = dogListApiResponse.data.dogs
+        val dogDtoMapper = DogDtoMapper()
+        dogDtoMapper.fromDogDTOListToDogDomainList(dogDTOList)
     }
 }

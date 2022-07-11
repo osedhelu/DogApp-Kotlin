@@ -39,29 +39,16 @@ class DogListActivity : AppCompatActivity() {
 
         dogListViewMode.status.observe(this) { status ->
             when (status) {
-                ApiResponseStatus.LOADING -> {
-                    pbLoadigDog.visibility = View.VISIBLE
-                }
-                ApiResponseStatus.SUCCESS -> {
-
-                    pbLoadigDog.visibility = View.INVISIBLE
-                }
-                ApiResponseStatus.ERROR -> {
-
-                    pbLoadigDog.visibility = View.INVISIBLE
+               is ApiResponseStatus.Error -> {
+                    pbLoadigDog.visibility = View.GONE
                     Toast.makeText(
                         this,
-                        "Error al descargar los datos de internet",
+                        status.messageId,
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                else -> {
-                    Toast.makeText(
-                        this,
-                        "Estado no conocido",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+                is ApiResponseStatus.Loading -> pbLoadigDog.visibility = View.VISIBLE
+                is ApiResponseStatus.Success -> pbLoadigDog.visibility = View.GONE
             }
         }
     }
