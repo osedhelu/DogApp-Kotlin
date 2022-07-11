@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 class DogDTO (
     val id: Long,
     val index: Int,
-    @field:Json(name = "name_en") val name: String,
+    @field:Json(name = "name_es") val name: String,
     @field:Json(name = "dog_type") val type: String,
     @field:Json(name = "height_female") val heightFemale: String,
     @field:Json(name = "height_male") val heightMale: String,

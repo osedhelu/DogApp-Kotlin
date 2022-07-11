@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.dogapp.GRID_SPAN_COUNT
 import com.example.dogapp.api.ApiResponseStatus
 import com.example.dogapp.databinding.ActivityDogListBinding
 import com.example.dogapp.dogdetail.DogDetailsActivity
@@ -20,15 +22,13 @@ class DogListActivity : AppCompatActivity() {
         val binding = ActivityDogListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val rvDogList = binding.rvDogList
-        rvDogList.layoutManager = LinearLayoutManager(this)
+        rvDogList.layoutManager = GridLayoutManager(this, GRID_SPAN_COUNT)
         val adapter = DogAdapter()
         val pbLoadigDog = binding.pbLoadigDog
         adapter.setOnItemClickListener {
             val intent = Intent(this, DogDetailsActivity::class.java)
             intent.putExtra(DOG_KEY, it)
             println(intent)
-
-//            intent.putExtra(DOG_KEY,it)
             startActivity(intent)
 
         }

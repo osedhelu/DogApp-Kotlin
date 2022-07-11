@@ -15,5 +15,6 @@
     <color name="colorPrimaryDark">#D32F2F</color>
     <color name="colorAccent">#FFFF00</color>
     <color name="colorSecondary">#142CC6</color>
+    <color name="personalGrid">#BCBCBC</color>
     <color name="colorSecondaryDark">#0C1D8A</color>
 </resources>
