@@ -12,6 +12,7 @@ import com.example.dogapp.MainActivity
 import com.example.dogapp.R
 import com.example.dogapp.api.ApiResponseStatus
 import com.example.dogapp.databinding.ActivityAuthBinding
+import com.example.dogapp.interfaces.User
 
 class AuthActivity : AppCompatActivity(),LoginFragment.LoginFragmentAction,SignUpFragment.SignUpFragmentAction {
     private val viewModel:AuthViewModel by viewModels()
@@ -34,6 +35,7 @@ class AuthActivity : AppCompatActivity(),LoginFragment.LoginFragmentAction,SignU
         viewModel.user.observe(this) {
             user ->
             if(user != null) {
+                User.setLoggedInUser(this, user)
                 startMainActivity()
             }
         }
@@ -41,6 +43,7 @@ class AuthActivity : AppCompatActivity(),LoginFragment.LoginFragmentAction,SignU
 
     private fun startMainActivity() {
        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
     override fun onRegisterBtnClick() {
         findNavController(R.id.nav_host_fragment)
