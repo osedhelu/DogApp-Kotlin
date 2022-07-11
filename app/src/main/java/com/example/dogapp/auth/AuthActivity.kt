@@ -2,13 +2,19 @@ package com.example.dogapp.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.findNavController
 import com.example.dogapp.R
 import com.example.dogapp.databinding.ActivityAuthBinding
 
-class AuthActivity : AppCompatActivity() {
+class AuthActivity : AppCompatActivity(),LoginFragment.LoginFragmentAction {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
+
+    override fun onRegisterBtnClick() {
+        findNavController(R.id.nav_host_fragment)
+            .navigate(LoginFragmentDirections.actionLoginFragmentToSignUpFragment())
     }
 }

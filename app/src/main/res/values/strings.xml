@@ -12,6 +12,17 @@
     <string name="unknown_error">There was an error</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Correo</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Login</string>
+    <string name="do_not_have_an_account">No tiene una cuenta</string>
+    <string name="register">Registrar</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="password_is_not_empty">password cannot be empty</string>
+    <string name="email_is_no_valid">Email is not valid</string>
+    <string name="password_is_not_equal">Password is not Equal</string>
+
 
 
 </resources>
