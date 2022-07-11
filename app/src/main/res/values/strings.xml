@@ -27,6 +27,7 @@
     <string name="user_already_exists">el usuario ya existe</string>
     <string name="there_was_an_error">Hubo un error!!</string>
     <string name="your_credentials_are_incorrect">Correo o contraseña incorrectas</string>
+    <string name="descriptionimg01">descriptionimg01</string>
 
 
 </resources>
