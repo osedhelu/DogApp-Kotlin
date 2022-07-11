@@ -1,5 +1,6 @@
 package com.example.dogapp.auth
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Patterns
 import androidx.fragment.app.Fragment
@@ -12,6 +13,21 @@ import com.example.dogapp.databinding.FragmentLoginBinding
 import com.example.dogapp.databinding.FragmentSignUpBinding
 
 class SignUpFragment : Fragment() {
+    interface SignUpFragmentAction {
+        fun onSignUpFieldsValidated(email: String, pass: String, confirm_pass: String)
+
+    }
+
+    private lateinit var signupFragmentActions: SignUpFragmentAction
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        signupFragmentActions = try {
+            context as SignUpFragmentAction
+        } catch (e: Exception) {
+            throw ClassCastException("$context must implement SignUpFragmentAction")
+        }
+    }
+
     private lateinit var binding: FragmentSignUpBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +64,7 @@ class SignUpFragment : Fragment() {
             return
         }
 //        Toast.makeText(this,"Hola ",Toast.LENGTH_SHORT).show()
+        signupFragmentActions.onSignUpFieldsValidated(email,pass,passConfirmation)
     }
 
     private fun isEmail(email: String?): Boolean {
