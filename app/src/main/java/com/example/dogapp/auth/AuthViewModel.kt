@@ -23,9 +23,13 @@ class AuthViewModel : ViewModel() {
                 authRepository.signup(email, password, passConfirmation = ConfirmationPassword)
             )
         }
-
     }
-
+    fun logIn(email: String, password: String) {
+        viewModelScope.launch {
+            _status.value = ApiResponseStatus.Loading()
+            handleResponseStatus(authRepository.login(email, password))
+        }
+    }
     private fun handleResponseStatus(apiResponseStatus: ApiResponseStatus<User>) {
         if (apiResponseStatus is ApiResponseStatus.Success) {
             _user.value = apiResponseStatus.data

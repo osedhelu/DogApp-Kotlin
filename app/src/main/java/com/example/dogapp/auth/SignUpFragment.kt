@@ -2,15 +2,15 @@ package com.example.dogapp.auth
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.example.dogapp.R
-import com.example.dogapp.databinding.FragmentLoginBinding
 import com.example.dogapp.databinding.FragmentSignUpBinding
+import com.example.dogapp.utils.isEmail
+import com.example.dogapp.utils.isEqualPassword
+import com.example.dogapp.utils.isPassword
 
 class SignUpFragment : Fragment() {
     interface SignUpFragmentAction {
@@ -32,7 +32,7 @@ class SignUpFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSignUpBinding.inflate(layoutInflater)
         setupSignUpButton()
         return binding.root
@@ -63,19 +63,8 @@ class SignUpFragment : Fragment() {
             binding.confirmPasswordEdit.error = getString(R.string.password_is_not_equal)
             return
         }
-//        Toast.makeText(this,"Hola ",Toast.LENGTH_SHORT).show()
         signupFragmentActions.onSignUpFieldsValidated(email,pass,passConfirmation)
     }
 
-    private fun isEmail(email: String?): Boolean {
-        return !email.isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
-    }
 
-    private fun isPassword(pass: String?): Boolean {
-        return pass.isNullOrEmpty() || pass.isEmpty()
-    }
-
-    private fun isEqualPassword(pass1_confirm: String?, pass2: String?): Boolean {
-        return pass1_confirm != pass2
-    }
 }

@@ -47,6 +47,11 @@ class AuthActivity : AppCompatActivity(),LoginFragment.LoginFragmentAction,SignU
             .navigate(LoginFragmentDirections.actionLoginFragmentToSignUpFragment())
     }
 
+    override fun onLoginFieldsValidate(email: String, password: String) {
+        viewModel.logIn(email,password)
+
+    }
+
     override fun onSignUpFieldsValidated(email: String, pass: String, confirm_pass: String) {
         viewModel.signUp(email,pass,confirm_pass)
     }

@@ -3,7 +3,9 @@ package com.example.dogapp.api
 
 import com.example.dogapp.BASE_URL
 import com.example.dogapp.GET_ALL_DOGS_URL
+import com.example.dogapp.LOGIN_URL
 import com.example.dogapp.SIGN_UP_URL
+import com.example.dogapp.api.dto.LoginDTO
 import com.example.dogapp.api.dto.SignUpDTO
 import com.example.dogapp.api.response.DogListApiResponse
 import com.example.dogapp.api.response.SignApiResponse
@@ -24,6 +26,8 @@ interface ApiServer {
     suspend fun getAllDogs(): DogListApiResponse
     @POST(SIGN_UP_URL)
     suspend fun signUp(@Body signUpDTO: SignUpDTO): SignApiResponse
+    @POST(LOGIN_URL)
+    suspend fun login(@Body loginDTO: LoginDTO): SignApiResponse
 }
 object DogsApi {
     val retrofitService: ApiServer by lazy {
